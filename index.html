@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECH ME</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("service_8a4q148"); // Replace with your EmailJS user ID
+        })();
+    </script>
+</head>
+<body>
+    <header>
+        <h1>
+            Gurpaag
+        </h1>
+        <p>
+            Welcome to my personal space
+        </p>
+        <section class="profile">
+            <img src="profile.png" alt="ME" class="profile-pic">
+            <h2>About Me</h2>
+            <p>Hello! I'm Gurpaag Singh, a tech enthusiastic and building web dev. I enjoy creating websites and exploring new technologies. My goal is to become a successful software engineer and contribute to exciting projects.</p>
+            <button class="contact-btn">Contact Me</button>
+        </section>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Welcome to My World</h1>
+                <p>Discover my projects, skills, experiences, and Community.</p>
+                <a href="#projects" class="cta-button">MY PROJECTS</a>
+            </div>
+        </section>
+        <section class="skills">
+            <h2>Skills</h2>
+            <div class="skill">
+                <span>HTML</span>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <span>CSS</span>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 75%;"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <span>JavaScript</span>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 60%;"></div>
+                </div>
+            </div>
+            <h2>Additional</h2>
+            <ul>
+                <li>Java</li>
+                <li>Python</li>
+                <li>Game Development</li>
+                <li>Chilling in the worst</li>
+            </ul>
+        
+        </section>
+        <section class="projects">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Portfolio Website</h3>
+                <p>A personal portfolio showcasing my skills and projects, built with HTML, CSS, and JavaScript.</p>
+                <a href="https://example.com" target="_blank" class="project-link">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Weather App</h3>
+                <p>A weather application that fetches live weather data using a public API and displays it to users.</p>
+                <a href="https://example.com" target="_blank" class="project-link">View Project</a>
+            </div>
+            <div class="project">
+                <h3>To-Do List App</h3>
+                <p>A simple to-do list application that helps users organize tasks and manage productivity.</p>
+                <a href="https://example.com" target="_blank" class="project-link">View Project</a>
+            </div>
+        </section>
+        <section class="contact">
+            <h2>Contact Me</h2>
+            <form id="contact-form" action="#" method="post" class="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+        
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+        
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+        
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+        <!-- Community Section -->
+        <section class="community">
+            <h2>LIVE TALK</h2>
+            <h4>Note: You can only talk to a live usser at website and the msg may delete as soon as you refresh.</h4>
+            <form id="commentForm">
+                <label for="username">Name</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="comment">Comment</label>
+                <textarea id="comment" name="comment" rows="4" required></textarea>
+                
+                <button type="submit">Post Comment</button>
+            </form>
+            <div id="commentsDisplay">
+                <h3>Comments</h3>
+                <ul id="commentsList"></ul>
+            </div>
+        </section> 
+    </header>
+    <script src="script.js"></script>
+    <footer>
+        <p>&copy; 2024 TECH ME. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com" target="_blank">Facebook</a>
+            <a href="https://www.twitter.com" target="_blank">Twitter</a>
+            <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+            <a href="https://www.github.com" target="_blank">GitHub</a>
+            <a href="https://www.discord.com" target="_blank">Discord</a>
+            <a href="https://gpss123.github.io/Brosuke/" target="https://gpss123.github.io/Brosuke/">MainHomeSite</a>
+        </div>
+        <div class="quick-links">
+            <h4>Quick Links</h4>
+            <a href="#about">About Me</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="contact-info">
+            <h4>Contact Information</h4>
+            <p>Email: gurpaagsingh3@gmail.com</p>
+            <p>Phone: +91 6396975500</p>
+        </div>
+        <p class="disclaimer">This website is a personal portfolio showcasing my work and information.</p>
+    </footer>
+    <script src="script.js"></script>
+<script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        emailjs.sendForm('service_8a4q148', 'template_1j4ywm7', this)
+            .then(function() {
+                alert('Message sent successfully!');
+                // Optionally, reset the form
+                document.getElementById('contact-form').reset();
+            }, function(error) {
+                alert('Failed to send message: ' + JSON.stringify(error));
+            });
+    });
+</script>
+
+<script>
+    document.getElementById('commentForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+        
+        const username = document.getElementById('username').value;
+        const comment = document.getElementById('comment').value;
+        
+        if (username && comment) {
+            const commentsList = document.getElementById('commentsList');
+            const newComment = document.createElement('li');
+            newComment.textContent = `${username}: ${comment}`;
+            commentsList.appendChild(newComment);
+            
+            // Clear the input fields
+            document.getElementById('username').value = '';
+            document.getElementById('comment').value = '';
+        }
+    });
+</script>
+
+</body>
+</html>
